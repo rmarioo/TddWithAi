@@ -38,7 +38,7 @@ func TestListAllEmployeesOlderThan18(t *testing.T) {
 // prompt 3: could you make the selected test to pass ?
 func TestListAllEmployeesYoungerThanAge(t *testing.T) {
 
-	var employeesYoungerThanAge []Employee = ListAllEmployeesYoungerThanAge(employees, 30)
+	var employeesYoungerThanAge []Employee = ListAllEmployeesYoungerThan(employees, 30)
 
 	expectedEmployees := []Employee{
 		{Name: "John", Age: 18},
@@ -51,7 +51,7 @@ func TestListAllEmployeesYoungerThanAge(t *testing.T) {
 
 }
 
-func ListAllEmployeesYoungerThanAge(employees []Employee, age int) []Employee {
+func ListAllEmployeesYoungerThan(employees []Employee, age int) []Employee {
 	var youngerThanAge []Employee
 	for _, emp := range employees {
 		if emp.Age < age {
