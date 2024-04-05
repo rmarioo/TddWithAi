@@ -35,6 +35,25 @@ func TestListAllEmployeesOlderThan18(t *testing.T) {
 
 }
 
+func TestListAllEmployeesYoungerThanAge(t *testing.T) {
+
+	var employeesYoungerThanAge []Employee = ListAllEmployeesYoungerThanAge(employees, 30)
+
+	expectedEmployees := []Employee{
+		{Name: "John", Age: 18},
+		{Name: "Mark", Age: 17},
+	}
+
+	if !reflect.DeepEqual(employeesYoungerThanAge, expectedEmployees) {
+		t.Fatalf("expected: %v, got: %v", expectedEmployees, employeesYoungerThanAge)
+	}
+
+}
+
+func ListAllEmployeesYoungerThanAge(employees []Employee, age int) []Employee {
+	return []Employee{}
+}
+
 func ListAllEmployeesOlderThan(employees []Employee, age int) []Employee {
 	var olderEmployees []Employee
 	for _, employee := range employees {
