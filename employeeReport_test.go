@@ -1,6 +1,7 @@
 package EmployeeReportWithAi
 
 import (
+	"github.com/samber/lo"
 	"reflect"
 	"testing"
 )
@@ -52,20 +53,11 @@ func TestListAllEmployeesYoungerThanAge(t *testing.T) {
 }
 
 // prompt 3: is possible eliminate the duplicated code in the selected code ?
+// prompt 4: is possible to refactor the selected code using the filter function in https://github.com/samber/lo?tab=readme-ov-file#filter ?
 func ListAllEmployeesYoungerThan(employees []Employee, ageLimit int) []Employee {
-	return filterEmployees(func(employee Employee) bool { return employee.age < ageLimit }, employees)
+	return lo.Filter(employees, func(employee Employee, index int) bool { return employee.age < ageLimit })
 }
 
 func ListAllEmployeesOlderThan(employees []Employee, ageLimit int) []Employee {
-	return filterEmployees(func(employee Employee) bool { return employee.age > ageLimit }, employees)
-}
-
-func filterEmployees(condition func(Employee) bool, employees []Employee) []Employee {
-	var filteredEmployees []Employee
-	for _, emp := range employees {
-		if condition(emp) {
-			filteredEmployees = append(filteredEmployees, emp)
-		}
-	}
-	return filteredEmployees
+	return lo.Filter(employees, func(employee Employee, index int) bool { return employee.age > ageLimit })
 }
