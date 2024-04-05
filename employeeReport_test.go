@@ -1,4 +1,4 @@
-package EmployeeReportWithAi
+package TddWithAi
 
 import (
 	"github.com/samber/lo"

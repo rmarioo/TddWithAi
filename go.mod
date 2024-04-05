@@ -1,4 +1,4 @@
-module EmployeeReportWithAi
+module TddWithAi
 
 go 1.22
 
