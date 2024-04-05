@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// show me how to create an array of employees in golan in a single instruction. An employee has an age and a name
+// prompt 1: show me how to create an array of employees in golan in a single instruction. An employee has an age and a name
 
 type Employee struct {
 	Name string
@@ -19,6 +19,7 @@ var employees = []Employee{
 	{Name: "Mark", Age: 17},
 }
 
+// prompt 2: could you make the selected test to pass ?
 func TestListAllEmployeesOlderThan18(t *testing.T) {
 
 	var olderEmployees []Employee = ListAllEmployeesOlderThan(employees, 18)
@@ -34,6 +35,12 @@ func TestListAllEmployeesOlderThan18(t *testing.T) {
 
 }
 
-func ListAllEmployeesOlderThan(allEmployees []Employee, ageFilter int) []Employee {
-	return []Employee{}
+func ListAllEmployeesOlderThan(employees []Employee, age int) []Employee {
+	var olderEmployees []Employee
+	for _, employee := range employees {
+		if employee.Age > age {
+			olderEmployees = append(olderEmployees, employee)
+		}
+	}
+	return olderEmployees
 }
