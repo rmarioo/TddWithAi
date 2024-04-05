@@ -1,6 +1,7 @@
 package EmployeeReportWithAi
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -20,4 +21,19 @@ var employees = []Employee{
 
 func TestListAllEmployeesOlderThan18(t *testing.T) {
 
+	var olderEmployees []Employee = ListAllEmployeesOlderThan(employees, 18)
+
+	expectedEmployees := []Employee{
+		{Name: "Alice", Age: 30},
+		{Name: "Bob", Age: 40},
+	}
+
+	if !reflect.DeepEqual(olderEmployees, expectedEmployees) {
+		t.Fatalf("expected: %v, got: %v", expectedEmployees, olderEmployees)
+	}
+
+}
+
+func ListAllEmployeesOlderThan(allEmployees []Employee, ageFilter int) []Employee {
+	return []Employee{}
 }
